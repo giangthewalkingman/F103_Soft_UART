@@ -56,7 +56,7 @@ static void MX_TIM3_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+uint32_t check_if;
 /* USER CODE END 0 */
 
 /**
@@ -89,6 +89,13 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+  ssInit(9600); // Initialise software UART and specify the baud rate
+  while(1) {
+	  if(isRxAvailable()) {
+		  ssWriteByte(ssReadByte());
+		  check_if++;
+	  }
+  }
 
   /* USER CODE END 2 */
 

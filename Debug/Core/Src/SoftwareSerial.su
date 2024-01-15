@@ -1,6 +1,6 @@
-../Core/Src/SoftwareSerial.c:47:6:ssInit	24	static
-../Core/Src/SoftwareSerial.c:84:6:ssWriteByte	16	static
-../Core/Src/SoftwareSerial.c:112:6:ssWrite	24	static
-../Core/Src/SoftwareSerial.c:124:9:isRxAvailable	4	static
-../Core/Src/SoftwareSerial.c:133:6:ssReadByte	4	static
-../Core/Src/SoftwareSerial.c:148:6:TIM3_IRQHandler	16	static
+../Core/Src/SoftwareSerial.c:48:6:ssInit	24	static
+../Core/Src/SoftwareSerial.c:85:6:ssWriteByte	16	static
+../Core/Src/SoftwareSerial.c:113:6:ssWrite	24	static
+../Core/Src/SoftwareSerial.c:125:9:isRxAvailable	4	static
+../Core/Src/SoftwareSerial.c:134:6:ssReadByte	4	static
+../Core/Src/SoftwareSerial.c:149:6:TIM3_IRQHandler	16	static

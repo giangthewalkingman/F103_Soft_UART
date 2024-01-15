@@ -10,12 +10,12 @@
 
 #include <stdint.h>
 
-#define SS_MAX_TX_BUFF			256
-#define SS_MAX_RX_BUFF			256
+#define SS_MAX_TX_BUFF			128
+#define SS_MAX_RX_BUFF			128
 
-#if(SS_MAX_TX_BUFF == 256)
-	#define	TX_BUFF_SIZE_BIT	8
-#elif(SS_MAX_TX_BUFF == 128)
+//#if(SS_MAX_TX_BUFF == 256)
+//	#define	TX_BUFF_SIZE_BIT	8
+#if(SS_MAX_TX_BUFF == 128)
 	#define	TX_BUFF_SIZE_BIT	7
 #elif(SS_MAX_TX_BUFF == 64)
 	#define	TX_BUFF_SIZE_BIT	6
@@ -31,9 +31,9 @@ typedef struct {
 	uint8_t pos	:	TX_BUFF_SIZE_BIT;
 } tx_uintx_t;
 
-#if(SS_MAX_RX_BUFF == 256)
-	#define	RX_BUFF_SIZE_BIT	8
-#elif(SS_MAX_RX_BUFF == 128)
+//#if(SS_MAX_RX_BUFF == 256)
+//	#define	RX_BUFF_SIZE_BIT	8
+#if(SS_MAX_RX_BUFF == 128)
 	#define	RX_BUFF_SIZE_BIT	7
 #elif(SS_MAX_RX_BUFF == 64)
 	#define	RX_BUFF_SIZE_BIT	6

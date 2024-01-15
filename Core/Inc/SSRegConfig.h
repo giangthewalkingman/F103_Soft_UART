@@ -11,7 +11,8 @@
 #include "GPIORegister.h"
 #include "TimerRegister.h"
 
-#define	RX_DATA			((GPIOA->IDR)>>7) && 0x01
+//#define	RX_DATA			((GPIOA->IDR)>>7) && 0x01
+#define	RX_DATA			GPIO_A->IDR7
 
 extern TIM_SR_t *TIM3_SR;
 extern TIM_DIER_t *TIM3_DIER;

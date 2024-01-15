@@ -1,6 +1,6 @@
-../Core/Src/SoftwareSerial.c:47:6:ssInit	3
-../Core/Src/SoftwareSerial.c:84:6:ssWriteByte	2
-../Core/Src/SoftwareSerial.c:112:6:ssWrite	2
-../Core/Src/SoftwareSerial.c:124:9:isRxAvailable	1
-../Core/Src/SoftwareSerial.c:133:6:ssReadByte	2
-../Core/Src/SoftwareSerial.c:148:6:TIM3_IRQHandler	15
+../Core/Src/SoftwareSerial.c:48:6:ssInit	3
+../Core/Src/SoftwareSerial.c:85:6:ssWriteByte	3
+../Core/Src/SoftwareSerial.c:113:6:ssWrite	2
+../Core/Src/SoftwareSerial.c:125:9:isRxAvailable	1
+../Core/Src/SoftwareSerial.c:134:6:ssReadByte	2
+../Core/Src/SoftwareSerial.c:149:6:TIM3_IRQHandler	13

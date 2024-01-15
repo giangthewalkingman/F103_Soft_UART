@@ -9,6 +9,7 @@
 #include "SoftwareSerial.h"
 #include "stm32f1xx.h"
 #include "SSRegConfig.h"
+#include <stdbool.h>
 
 TIM_SR_t *TIM3_SR = (TIM_SR_t *)(&TIM3->SR);
 TIM_DIER_t *TIM3_DIER = (TIM_DIER_t *)(&TIM3->DIER);
