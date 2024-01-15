@@ -1,0 +1,60 @@
+/*
+ * SSRegConfig.h
+ *
+ *  Created on: Jan 15, 2024
+ *      Author: admin
+ */
+
+#ifndef INC_SSREGCONFIG_H_
+#define INC_SSREGCONFIG_H_
+
+#include "GPIORegister.h"
+#include "TimerRegister.h"
+
+#define	RX_DATA			((GPIOA->IDR)>>7) && 0x01
+
+extern TIM_SR_t *TIM3_SR;
+extern TIM_DIER_t *TIM3_DIER;
+extern TIM_CCMR1_t *TIM3_CCMR1;
+extern TIM_CCMR2_t *TIM3_CCMR2;
+extern TIM_CCER_t *TIM3_CCER;
+extern TIM_CR1_t *TIM3_CR1;
+
+#define	F_CPU			SystemCoreClock
+
+/* GPIOC Config */
+#define ENABLE_GPIOA_CLOCK()					RCC->APB2ENR |= RCC_APB2ENR_IOPAEN
+#define CONFIG_GPIOA6_MODE()					( GPIO_A->MODER6 = 0b10, GPIO_A->OSPEEDR6 = 0b11, GPIO_A->AFRL6 = 0b0010 )
+#define	CONFIG_GPIOA7_MODE()					( GPIO_A->MODER7 = 0b10, GPIO_A->OSPEEDR7 = 0b11, \
+								  GPIO_A->AFRL7 = 0b0010, GPIO_A->PUPDR7 = 0x01 )
+
+#define	FALLING_EDGE		0b0010
+#define	RISING_EDGE		0b0000
+#define	BOTH_EDGES		0b1010
+
+/* Timer3 Config */
+#define ENABLE_TIM3_CLOCK()				RCC->APB1ENR |= RCC_APB1ENR_TIM3EN
+#define	CONFIG_TIM3_PSC(prescaler)			TIM3->PSC = ((prescaler) - 1)
+#define	CONFIG_TIM3_ARR(ARR_value)			TIM3->ARR = ARR_value
+#define	CONFIG_TIM3_CCR1(COMP_value)			TIM3->CCR1 = COMP_value
+#define	CONFIG_TIM3_CCR3(COMP_value)			TIM3->CCR3 = COMP_value
+#define	CONFIG_TIM3_CC1_DIR()				(TIM3_CCMR1->CC1S = 0, TIM3_CCMR1->OC1M3 = 0)
+#define	CONFIG_TIM3_CC2_DIR()				TIM3_CCMR1->CC2S = 1
+#define	CONFIG_TIM3_CC3_DIR()				TIM3_CCMR2->CC3S = 0
+#define FORCE_OC1REF_HIGH()				TIM3_CCMR1->OC1M0_2 = 0b101
+#define	CONFIG_TIM3_CC1_OUT_MODE(BIT_DATA)		TIM3_CCMR1->OC1M0_2 = (2 >> (BIT_DATA))
+#define	CONFIG_TIM3_CC2_CAP_TRIGGER(trigger)		TIM3_CCER->CCER2 = ((TIM3_CCER->CCER2 & 0b0001) | trigger)
+#define	ENABLE_TIM3_OUTPUT_COMP1()			TIM3_CCER->CCER1 = 1
+#define	ENABLE_TIM3_INPUT_CAP2()			TIM3_CCER->CCER2 |= 1
+#define ENABLE_TIM3_CC1_INT()				TIM3_DIER->CC1IE = 1
+#define ENABLE_TIM3_CC2_INT()				TIM3_DIER->CC2IE = 1
+#define ENABLE_TIM3_CC3_INT()				TIM3_DIER->CC3IE = 1
+#define	DISABLE_TIM3_OUTPUT_COMP1()			TIM3_CCER->CCER1 = 0
+#define	DISABLE_TIM3_INPUT_CAP2()			TIM3_CCER->CCER2 &= 0b1110
+#define DISABLE_TIM3_CC1_INT()				TIM3_DIER->CC1IE = 0
+#define DISABLE_TIM3_CC2_INT()				TIM3_DIER->CC2IE = 0
+#define DISABLE_TIM3_CC3_INT()				TIM3_DIER->CC3IE = 0
+#define	ENABLE_TIM3_COUNTER()				TIM3_CR1->CEN = 1
+#define	ENABLE_TIM3_INTERRUPT()				NVIC->ISER[0] |= 1 << 29
+#define	DISABLE_TIM3_INTERRUPT()			NVIC->ISER[0] &= ~(1 << 29)
+#endif /* INC_SSREGCONFIG_H_ */

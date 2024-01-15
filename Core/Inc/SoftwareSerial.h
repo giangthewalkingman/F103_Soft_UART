@@ -8,6 +8,8 @@
 #ifndef INC_SOFTWARESERIAL_H_
 #define INC_SOFTWARESERIAL_H_
 
+#include <stdint.h>
+
 #define SS_MAX_TX_BUFF			256
 #define SS_MAX_RX_BUFF			256
 
@@ -52,6 +54,6 @@ void ssWriteByte(char byte);
 void ssWrite(const char *data);
 uint8_t isRxAvailable();
 char ssReadByte();
-void TIM3_IRQHandler();
+//extern void TIM3_IRQHandler();
 
 #endif /* INC_SOFTWARESERIAL_H_ */

@@ -1,10 +1,3 @@
-/*
- * SoftwareSerial.c
- *
- *  Created on: Jan 15, 2024
- *      Author: admin
- */
-
 /**
  * @file	SoftwareSerial.c
  * @author	Looi Kian Seong
@@ -14,6 +7,8 @@
  */
 
 #include "SoftwareSerial.h"
+#include "stm32f1xx.h"
+#include "SSRegConfig.h"
 
 TIM_SR_t *TIM3_SR = (TIM_SR_t *)(&TIM3->SR);
 TIM_DIER_t *TIM3_DIER = (TIM_DIER_t *)(&TIM3->DIER);
@@ -63,9 +58,9 @@ void ssInit(uint32_t baudrate) {
 		return;
 
 	one_and_half_bit_time = cnt_per_bit / 2 + cnt_per_bit;
-	ENABLE_GPIOC_CLOCK();
-	CONFIG_GPIOC6_MODE();
-	CONFIG_GPIOC7_MODE();
+	ENABLE_GPIOA_CLOCK();
+	CONFIG_GPIOA6_MODE();
+	CONFIG_GPIOA7_MODE();
 
 	ENABLE_TIM3_CLOCK();
 	CONFIG_TIM3_PSC(prescaler);
@@ -225,4 +220,3 @@ void TIM3_IRQHandler() {
 		}
 	}
 }
-
